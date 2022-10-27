@@ -1,4 +1,10 @@
-import { render } from "react-dom";
+import React from "react";
 import FinanceTrackerApp from "./finance_tracker_app";
+import ReactDOM from "react-dom/client";
 
-render(<FinanceTrackerApp />, document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+    <React.StrictMode>
+        <FinanceTrackerApp />
+    </React.StrictMode>
+);

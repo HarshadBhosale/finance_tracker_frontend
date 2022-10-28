@@ -1,21 +1,39 @@
-import React, { useState } from "react";
-import NavView from "./nav_view";
-import NavOption from "./nav_option";
+import React from "react";
+import {Link, BrowserRouter, Route, Routes} from "react-router-dom";
+import UserStats from "../pages/UserStats/user_stats";
+import UserProfile from "../pages/UserProfile/user_profile";
+import UserTransactions from "../pages/UserTransactions/user_transactions";
+import UserVisualStats from "../pages/UserVisualStats/user_visual_stats";
+import NavGroupStyles from "./nav_group_styles";
 
 const NavGroup = () => {
-    const[currentOption, setCurrentOption] = useState("");
+    const options = ["stats", "profile", "transactions", "graphics"];
+    const views = [<UserStats />, <UserProfile />, <UserTransactions />, <UserVisualStats />];
 
     return(
         <>
-            <div>
-            <div>
-                <NavOption setOption={setCurrentOption} />
-            </div>
+        <BrowserRouter>
+            <div style={NavGroupStyles.Group}>
+                <div style={NavGroupStyles.Options}>
+                    {options.map((option)=>{
+                        return(
+                            <Link key={`${option}`} to = {`/${option}`}> {option} </Link>
+                        )
+                    })}
+                </div>
 
-            <div>
-                <NavView option={currentOption}/>
+                <div style={NavGroupStyles.Views}>
+                    <Routes>
+                        {views.map((view, index)=>{
+                            return(
+                                <Route exact path={`/${options[index]}`} key={`${view}`} element= {view} />
+                            )
+                        })}
+                        <Route exact path="/" element={<UserStats />} />
+                    </Routes>
+                </div>
             </div>
-            </div>
+        </BrowserRouter>
         </>
     );
 }

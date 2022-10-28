@@ -6,7 +6,7 @@ const Header = () => {
     return(
         <>
             <div>
-                In header
+                <h1>Harshosale</h1>
             </div>
         </>
     );

@@ -1,4 +1,5 @@
 import React from "react";
+import UserProfileStyles from "./UserProfileStyles";
 
 const UserProfile = () => {
     return(

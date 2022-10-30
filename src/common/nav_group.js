@@ -6,9 +6,9 @@ import UserTransactions from "../pages/UserTransactions/user_transactions";
 import UserVisualStats from "../pages/UserVisualStats/user_visual_stats";
 import NavGroupStyles from "./nav_group_styles";
 
-const NavGroup = () => {
+const NavGroup = (props) => {
     const options = ["stats", "profile", "transactions", "graphics"];
-    const views = [<UserStats />, <UserProfile />, <UserTransactions />, <UserVisualStats />];
+    const views = [<UserStats userId={props.userId}/>, <UserProfile userId={props.userId} setIsSigned={props.setIsSigned}/>, <UserTransactions userId={props.userId}/>, <UserVisualStats userId={props.userId}/>];
 
     return(
         <>
@@ -17,7 +17,7 @@ const NavGroup = () => {
                 <div style={NavGroupStyles.Options}>
                     {options.map((option)=>{
                         return(
-                            <Link key={`${option}`} to = {`/${option}`}> {option} </Link>
+                            <Link style={NavGroupStyles.LinkOptions} key={`${option}`} to = {`/${option}`}> {option} </Link>
                         )
                     })}
                 </div>
@@ -29,7 +29,7 @@ const NavGroup = () => {
                                 <Route exact path={`/${options[index]}`} key={`${view}`} element= {view} />
                             )
                         })}
-                        <Route exact path="/" element={<UserStats />} />
+                        <Route exact path="/" element={<UserStats userId={props.userId} />} />
                     </Routes>
                 </div>
             </div>

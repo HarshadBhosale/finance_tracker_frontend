@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserVisualStats = () => {
+const UserVisualStats = (props) => {
     return(
         <>
             <div>

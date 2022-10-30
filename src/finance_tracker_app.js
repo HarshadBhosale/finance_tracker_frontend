@@ -5,15 +5,15 @@ import Header from "./common/header";
 import FinanceTrackerAppStyles from "./finance_tracker_app_styles";
 
 const FinanceTrackerApp = () => {
-    const [isSigned, setIsSigned] = useState(false);
-    const[userId, setUserId] = useState();
+    const[userId, setUserId] = useState(sessionStorage.getItem("user_id"));
+    const [isSigned, setIsSigned] = useState(()=>{return userId?true:false});
     
     return(
         <div style={FinanceTrackerAppStyles.Root}>
-            <Header />
+            <Header isSigned={isSigned}/>
             {
                 isSigned ?
-                <NavGroup /> :
+                <NavGroup userId={userId} setIsSigned={setIsSigned} /> :
                 <UserRegistration setIsSigned={setIsSigned} setUserId={setUserId} />
             }
         </div>

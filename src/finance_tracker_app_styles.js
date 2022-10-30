@@ -1,10 +1,10 @@
 const FinanceTrackerAppStyles = {
     Root : {
-        backgroundColor: "red",
+        backgroundColor: "#5CFFFF",
         width: "99vw",
-        height: "90vh",
-        margin: "-10px 0px -10px 0px",
-        padding: "-10px 0px -10px 0px",
+        height: "99vh",
+        margin: "-5px 0px -5px 0px",
+        padding: "-5px -5px -5px -5px",
     },
 }
 

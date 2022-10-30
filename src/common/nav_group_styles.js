@@ -1,25 +1,26 @@
 const NavGroupStyles = {
     Group : {
         display: "flex",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "yellow",
+        height: "88%",
+        backgroundColor: "#FFA500",
     },
     Options : {
         display: "flex",
         color: "green",
-        textDecoration: "none",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         margin: "20px 10px 20px 10px",
         fontSize: "20px",
     },
+    LinkOptions : {
+        textDecoration: "none",
+    },
     Views : {
         color: "green",
         width: "100%",
         textAlign: "center",
-        backgroundColor: "black",
+        backgroundColor: "#39FF14",
     },
 }
 

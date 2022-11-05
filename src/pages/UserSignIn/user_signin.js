@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import UserLoginStyles from "./user_login_styles";
+import UserLoginStyles from "./user_signin_styles";
 import CallAPI from "../../utils/call_api";
 
-const UserLogin = (props) => {
+const UserSignIn = (props) => {
     const[loading, setLoading] = useState(false);
 
     const logInUserProfile = async (api_json) => {
@@ -25,20 +25,12 @@ const UserLogin = (props) => {
       };
     
     return(
-        <>
-            <form onSubmit={handleSubmit}>
-                <div style={UserLoginStyles.Input}>
-                    <input type="email" name="email" placeholder="Email..." required />
-                </div>
-                <div style={UserLoginStyles.Input}>
-                    <input type="password" name="password" placeholder="Password..." required />
-                </div>
-                <div style={UserLoginStyles.Button}>
-                    <input type="submit" />
-                </div>
-            </form>
-        </>
+        <form style={UserLoginStyles.SignInForm} onSubmit={handleSubmit}>
+            <input style={UserLoginStyles.Input} type="email" name="email" placeholder="Email..." required />
+            <input style={UserLoginStyles.Input} type="password" name="password" placeholder="Password..." required />
+            <button style={UserLoginStyles.Button} type="submit"> Sign In </button>
+        </form>
     )
 }
 
-export default UserLogin;
+export default UserSignIn;

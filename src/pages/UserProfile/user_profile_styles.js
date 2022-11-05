@@ -1,7 +1,6 @@
 const UserProfileStyles = {
-    div : {
-        backgroundColor: "black",
-        color: "green",
+    ProfileCard : {
+        color: 'green',
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CallAPI from "../../utils/call_api"
+import UserProfileStyles from "./user_profile_styles";
 
 const UserProfile = (props) => {
     const[d, setd] = useState({});
@@ -22,14 +23,12 @@ const UserProfile = (props) => {
     }, [UserProfile])
 
     return(
-        <>
-            <div>
-                <div>{d.name}</div>
-                <div>{d.email}</div>
-                <div>+{d.country_code}-{d.mobile_number}</div>
-                <Link to="/" onClick={logoutUserProfile}> Log Out </Link>
-            </div>
-        </>
+        <div style={UserProfileStyles.ProfileCard}>
+            <div>{d.name}</div>
+            <div>{d.email}</div>
+            <div>+{d.country_code}-{d.mobile_number}</div>
+            <Link to="/" onClick={logoutUserProfile}> Log Out </Link>
+        </div>
     );
 }
 

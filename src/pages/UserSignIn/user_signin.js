@@ -7,7 +7,7 @@ const UserSignIn = (props) => {
 
     const logInUserProfile = async (api_json) => {
         setLoading(true)
-        let user = await CallAPI({url:"http://127.0.0.1:8000/users/login", method:"post", data:api_json})
+        let user = await CallAPI({url:"http://127.0.0.1:8000/signin", method:"post", data:api_json})
         props.setUserId(user.data.id);
         sessionStorage.setItem("user_id", user.data.id);
         setLoading(false)

@@ -13,7 +13,7 @@ const UserProfile = (props) => {
     }
     const getUserProfile = async () => {
         setLoading(true)
-        let user_profile = await CallAPI({url:"http://127.0.0.1:8000/users/get", method:"post", data:{"user_id": props.userId}})
+        let user_profile = await CallAPI({url:"http://127.0.0.1:8000/profile", method:"post", data:{"user_id": props.userId}})
         setd(user_profile.data)
         setLoading(false)
     }

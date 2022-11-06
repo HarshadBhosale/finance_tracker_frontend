@@ -15,9 +15,8 @@ const UserStats = (props) => {
 
     const getUserStats = async () => {
         setLoading(true)
-        let stats = await CallAPI({url:"http://127.0.0.1:8000/users/get/stats", method:"post", data:{"user_id":props.userId}})
-        setStats(stats.data[year]);
-        console.log(stats.data[year]);
+        let stats = await CallAPI({url:"http://127.0.0.1:8000/stats", method:"post", data:{"user_id":props.userId, "year": year}})
+        setStats(stats.data);
         setLoading(false)
     }
 
@@ -51,23 +50,23 @@ const UserStats = (props) => {
                             </div>
                         )
                     })}
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((month)=>{
+                    {StatsTable["Month"].map((month)=>{
                         return(
                             <>
                                 <div style={UserStatsStyles.StatsTableElement}>
-                                    {StatsTable['Month'][month-1]}
+                                    {month}
                                 </div>
                                 {StatsTable['Expense'].map((expenseCat)=>{
                                     return(
                                         <div style={UserStatsStyles.StatsTableElement}>
-                                            {stats?.[month]?.['Expense']?.[expenseCat.toLowerCase()]}
+                                            {stats[month]?.['Expense'][expenseCat]}
                                         </div>
                                     )
                                 })}
                                 {StatsTable['Income'].map((incomeCat)=>{
                                     return(
                                         <div style={UserStatsStyles.StatsTableElement}>
-                                            {stats?.[month]?.['Income']?.[incomeCat.toLowerCase()]}
+                                            {stats[month]?.['Income'][incomeCat]}
                                         </div>
                                     )
                                 })}

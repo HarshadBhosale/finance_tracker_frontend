@@ -2,13 +2,13 @@ import React from "react";
 import {Link, BrowserRouter, Route, Routes} from "react-router-dom";
 import UserStats from "../pages/UserStats/user_stats";
 import UserProfile from "../pages/UserProfile/user_profile";
-import UserTransactions from "../pages/UserTransactions/user_transactions";
-import UserVisualStats from "../pages/UserVisualStats/user_visual_stats";
+import Transactions from "../pages/Transactions/transactions";
+import UserGraphics from "../pages/UserGraphics/user_graphics";
 import NavGroupStyles from "./nav_group_styles";
 
 const NavGroup = (props) => {
     const options = ["stats", "profile", "transactions", "graphics"];
-    const views = [<UserStats userId={props.userId}/>, <UserProfile userId={props.userId} setIsSigned={props.setIsSigned}/>, <UserTransactions userId={props.userId}/>, <UserVisualStats userId={props.userId}/>];
+    const views = [<UserStats userId={props.userId}/>, <UserProfile userId={props.userId} setIsSigned={props.setIsSigned}/>, <Transactions userId={props.userId}/>, <UserGraphics userId={props.userId}/>];
 
     return(
         <>

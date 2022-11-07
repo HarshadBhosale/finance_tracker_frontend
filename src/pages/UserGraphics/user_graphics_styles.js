@@ -1,4 +1,4 @@
-const UserVisualStatsStyles = {
+const UserGraphicsStyles = {
     ChartContainer : {
         display: 'grid',
         gridTemplateColumns: 'auto auto',
@@ -13,4 +13,4 @@ const UserVisualStatsStyles = {
     },
 }
 
-export default UserVisualStatsStyles;
+export default UserGraphicsStyles;

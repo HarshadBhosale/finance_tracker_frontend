@@ -1,4 +1,4 @@
-const UserTransactionsStyles = {
+const TransactionsStyles = {
     TrasactionForm : {
         display: 'flex',
         flexDirection: 'row',
@@ -44,4 +44,4 @@ const UserTransactionsStyles = {
     }
 }
 
-export default UserTransactionsStyles;
+export default TransactionsStyles;

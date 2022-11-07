@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import CallAPI from "../../utils/call_api";
-import UserVisualStatsStyles from "./user_visual_stats_styles";
+import UserGraphicsStyles from "./user_graphics_styles";
 
-const UserVisualStats = (props) => {
+const UserGraphics = (props) => {
     const[loading, setLoading] = useState(false);
     const[year, setYear] = useState(2022);
     const[stats, setStats] = useState({});
@@ -88,15 +88,15 @@ const UserVisualStats = (props) => {
                 return (<option value={inputFieldValue}>{inputFieldValue}</option>)
             })}
         </select>
-        <div style={UserVisualStatsStyles.ChartContainer}>
+        <div style={UserGraphicsStyles.ChartContainer}>
             {
                 [ExpenseData, IncomeData].map((data)=>{
-                    return(<Line style={UserVisualStatsStyles.Charts} data={data} />)
+                    return(<Line style={UserGraphicsStyles.Charts} data={data} />)
                 })
             }
             {
                 [YearExpenseData, YearIncomeData].map((data)=>{
-                    return(<Line style={UserVisualStatsStyles.Charts} data={data} />)
+                    return(<Line style={UserGraphicsStyles.Charts} data={data} />)
                 })
             }
         </div>
@@ -105,4 +105,4 @@ const UserVisualStats = (props) => {
 
 }
 
-export default UserVisualStats;
+export default UserGraphics;

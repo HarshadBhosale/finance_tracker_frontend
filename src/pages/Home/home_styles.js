@@ -1,16 +1,21 @@
 const HomeStyles = {
     HomeMessage : {
         display: "flex",
-        height: "80%",
+        height: "90%",
         justifyContent: "center",
         alignItems: "center",
         fontSize: "30px",
         color: "OrangeRed",
+        flexDirection: "column",
+    },
+    ProjectAbout : {
+        margin: "10px",
+        padding: "10px",
     },
     Heart : {
         color: "red",
         display: "inline-block",
-        fontSize: "100px",
+        fontSize: "60px",
         // animation: "heart_animation infinite",
         animationDelay: "0.5s",
         animationDuration: "1.5s",

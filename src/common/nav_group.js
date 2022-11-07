@@ -1,14 +1,15 @@
 import React from "react";
 import {Link, BrowserRouter, Route, Routes} from "react-router-dom";
-import UserStats from "../pages/UserStats/user_stats";
-import UserProfile from "../pages/UserProfile/user_profile";
+import Stats from "../pages/Stats/stats";
+import Profile from "../pages/Profile/profile";
 import Transactions from "../pages/Transactions/transactions";
-import UserGraphics from "../pages/UserGraphics/user_graphics";
+import Graphics from "../pages/Graphics/graphics";
 import NavGroupStyles from "./nav_group_styles";
+import Home from "../pages/Home/home";
 
 const NavGroup = (props) => {
-    const options = ["stats", "profile", "transactions", "graphics"];
-    const views = [<UserStats userId={props.userId}/>, <UserProfile userId={props.userId} setIsSigned={props.setIsSigned}/>, <Transactions userId={props.userId}/>, <UserGraphics userId={props.userId}/>];
+    const options = ["home", "stats", "profile", "transactions", "graphics"];
+    const views = [<Home userId={props.userId}/>, <Stats userId={props.userId}/>, <Profile userId={props.userId} setIsSigned={props.setIsSigned}/>, <Transactions userId={props.userId}/>, <Graphics userId={props.userId}/>];
 
     return(
         <>
@@ -29,7 +30,7 @@ const NavGroup = (props) => {
                                 <Route exact path={`/${options[index]}`} key={`${view}`} element= {view} />
                             )
                         })}
-                        <Route exact path="/" element={<UserStats userId={props.userId} />} />
+                        <Route exact path="/" element={<Home userId={props.userId} />} />
                     </Routes>
                 </div>
             </div>

@@ -1,5 +1,5 @@
-const UserSigninStyles = {
-    SignupForm : {
+const SignInStyles = {
+    SignInForm : {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -8,7 +8,6 @@ const UserSigninStyles = {
     },
     Input : {
         fontSize: '16px',
-        display: 'flex',
         margin: '10px',
         padding: '5px',
         borderRadius: '16px',
@@ -17,10 +16,7 @@ const UserSigninStyles = {
     },
     Button : {
         fontSize: '16px',
-        display: 'flex',
         margin: '4px',
-        justifyContent: 'center',
-        alignItems: 'center',
         padding: '2px 8px 2px 8px',
         borderRadius: '16px',
         backgroundColor: 'Linen',
@@ -29,4 +25,4 @@ const UserSigninStyles = {
     }
 }
 
-export default UserSigninStyles;
+export default SignInStyles;

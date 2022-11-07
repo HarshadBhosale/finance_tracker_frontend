@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useGetProfile from "./useGetProfile";
-import UserProfileStyles from "./user_profile_styles";
+import ProfileStyles from "./profile_styles";
 
-const UserProfile = (props) => {
+const Profile = (props) => {
     const[profile, setProfile] = useState({});
     const[loading, setLoading] = useState(true);
 
-    const logoutUserProfile = () => {
+    const logoutProfile = () => {
         sessionStorage.removeItem("user_id")
         props.setIsSigned(false)
     }
 
-    const GetUserProfile = async () => {
+    const GetProfile = async () => {
         setLoading(true)
         useGetProfile({
             userId: props.userId,
@@ -22,17 +22,17 @@ const UserProfile = (props) => {
     }
 
     useEffect(()=>{
-        GetUserProfile()
-    }, [UserProfile])
+        GetProfile()
+    }, [Profile])
 
     return(
-        <div style={UserProfileStyles.ProfileCard}>
+        <div style={ProfileStyles.ProfileCard}>
             <div>{profile.name}</div>
             <div>{profile.email}</div>
             <div>+{profile.country_code}-{profile.mobile_number}</div>
-            <Link to="/" onClick={logoutUserProfile}> Log Out </Link>
+            <Link to="/" onClick={logoutProfile}> Log Out </Link>
         </div>
     );
 }
 
-export default UserProfile;
+export default Profile;

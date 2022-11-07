@@ -1,4 +1,4 @@
-const UserStatsStyles = {
+const StatsStyles = {
     ProfileCard : {
         display: 'grid',
         color: 'green',
@@ -16,4 +16,4 @@ const UserStatsStyles = {
     }
 }
 
-export default UserStatsStyles;
+export default StatsStyles;

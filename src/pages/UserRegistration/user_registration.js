@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserRegistrationStyles from "./user_registration_styles";
-import UserSignIn from "../UserSignIn/user_signin";
-import UserSignUp from "../UserSignUp/user_signup";
+import SignIn from "../SignIn/signin";
+import SignUp from "../SignUp/signup";
 
 const UserRegistration = (props) => {
     const[ifSignin, setIfSignin] = useState(true);
@@ -10,8 +10,8 @@ const UserRegistration = (props) => {
         <>
             {
                 ifSignin ?
-                <UserSignUp setIsSigned={props.setIsSigned} setUserId={props.setUserId} setIfSignin={setIfSignin}/> :
-                <UserSignIn setIsSigned={props.setIsSigned} setUserId={props.setUserId} />
+                <SignUp setIsSigned={props.setIsSigned} setUserId={props.setUserId} setIfSignin={setIfSignin}/> :
+                <SignIn setIsSigned={props.setIsSigned} setUserId={props.setUserId} />
             }
         </>
     );

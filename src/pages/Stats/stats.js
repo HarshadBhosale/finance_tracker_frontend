@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useGetStats from "./useGetStats";
-import UserStatsStyles from './user_stats_styles'
+import StatsStyles from './stats_styles'
 
-const UserStats = (props) => {
+const Stats = (props) => {
     const[loading, setLoading] = useState(false);
     const[year, setYear] = useState(2022);
     const[stats, setStats] = useState({});
@@ -25,30 +25,30 @@ const UserStats = (props) => {
 
     useEffect(()=>{
         GetStats({ "year": year });
-    }, [UserStats, year])
+    }, [Stats, year])
 
     return(
         <>
             <div>
-                <select value={year} style={UserStatsStyles} onChange={(event)=>{setYear(parseInt(event.target.value))}}>
+                <select value={year} style={StatsStyles} onChange={(event)=>{setYear(parseInt(event.target.value))}}>
                     {transactionYears.map((inputFieldValue)=>{
                         return (<option value={inputFieldValue}>{inputFieldValue}</option>)
                     })}
                 </select>
-                <div style={UserStatsStyles.Stats}>
-                    <div style={UserStatsStyles.StatsTableElement}>
+                <div style={StatsStyles.Stats}>
+                    <div style={StatsStyles.StatsTableElement}>
                         Month
                     </div>
                     {StatsTable['Expense'].map((expenseCat)=>{
                         return(
-                            <div style={UserStatsStyles.StatsTableElement}>
+                            <div style={StatsStyles.StatsTableElement}>
                                 {expenseCat}
                             </div>
                         )
                     })}
                     {StatsTable['Income'].map((incomeCat)=>{
                         return(
-                            <div style={UserStatsStyles.StatsTableElement}>
+                            <div style={StatsStyles.StatsTableElement}>
                                 {incomeCat}
                             </div>
                         )
@@ -56,19 +56,19 @@ const UserStats = (props) => {
                     {StatsTable["Month"].map((month)=>{
                         return(
                             <>
-                                <div style={UserStatsStyles.StatsTableElement}>
+                                <div style={StatsStyles.StatsTableElement}>
                                     {month}
                                 </div>
                                 {StatsTable['Expense'].map((expenseCat)=>{
                                     return(
-                                        <div style={UserStatsStyles.StatsTableElement}>
+                                        <div style={StatsStyles.StatsTableElement}>
                                             {stats[month]?.['Expense'][expenseCat]}
                                         </div>
                                     )
                                 })}
                                 {StatsTable['Income'].map((incomeCat)=>{
                                     return(
-                                        <div style={UserStatsStyles.StatsTableElement}>
+                                        <div style={StatsStyles.StatsTableElement}>
                                             {stats[month]?.['Income'][incomeCat]}
                                         </div>
                                     )
@@ -82,4 +82,4 @@ const UserStats = (props) => {
     );
 }
 
-export default UserStats;
+export default Stats;

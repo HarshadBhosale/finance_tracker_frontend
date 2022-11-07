@@ -1,32 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CallAPI from "../../utils/call_api"
+import useGetProfile from "./useGetProfile";
 import UserProfileStyles from "./user_profile_styles";
 
 const UserProfile = (props) => {
-    const[d, setd] = useState({});
+    const[profile, setProfile] = useState({});
     const[loading, setLoading] = useState(true);
 
     const logoutUserProfile = () => {
         sessionStorage.removeItem("user_id")
         props.setIsSigned(false)
     }
-    const getUserProfile = async () => {
+
+    const GetUserProfile = async () => {
         setLoading(true)
-        let user_profile = await CallAPI({url:"http://127.0.0.1:8000/profile", method:"post", data:{"user_id": props.userId}})
-        setd(user_profile.data)
+        useGetProfile({
+            userId: props.userId,
+            setProfile: setProfile
+        });
         setLoading(false)
     }
 
     useEffect(()=>{
-        getUserProfile()
+        GetUserProfile()
     }, [UserProfile])
 
     return(
         <div style={UserProfileStyles.ProfileCard}>
-            <div>{d.name}</div>
-            <div>{d.email}</div>
-            <div>+{d.country_code}-{d.mobile_number}</div>
+            <div>{profile.name}</div>
+            <div>{profile.email}</div>
+            <div>+{profile.country_code}-{profile.mobile_number}</div>
             <Link to="/" onClick={logoutUserProfile}> Log Out </Link>
         </div>
     );

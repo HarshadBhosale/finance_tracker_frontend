@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CallAPI from "../../utils/call_api";
+import useGetStats from "./useGetStats";
 import UserStatsStyles from './user_stats_styles'
 
 const UserStats = (props) => {
@@ -13,15 +13,18 @@ const UserStats = (props) => {
         'Income' : ['Salary', 'Investments', 'Business'],
     };
 
-    const getUserStats = async () => {
+    const GetStats = async (data) => {
         setLoading(true)
-        let stats = await CallAPI({url:"http://127.0.0.1:8000/stats", method:"post", data:{"user_id":props.userId, "year": year}})
-        setStats(stats.data);
+        useGetStats({
+            userId : props.userId,
+            data : data,
+            setStats : setStats,
+        })
         setLoading(false)
     }
 
     useEffect(()=>{
-        getUserStats();
+        GetStats({ "year": year });
     }, [UserStats, year])
 
     return(

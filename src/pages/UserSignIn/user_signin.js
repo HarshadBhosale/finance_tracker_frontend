@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import UserLoginStyles from "./user_signin_styles";
-import CallAPI from "../../utils/call_api";
+import useSignIn from "./useSignIn";
 
 const UserSignIn = (props) => {
     const[loading, setLoading] = useState(false);
 
-    const logInUserProfile = async (api_json) => {
+    const SignIn = async (data) => {
         setLoading(true)
-        let user = await CallAPI({url:"http://127.0.0.1:8000/signin", method:"post", data:api_json})
-        props.setUserId(user.data.id);
-        sessionStorage.setItem("user_id", user.data.id);
+        useSignIn({
+            data : data,
+            setUserId : props.setUserId,
+        });
         setLoading(false)
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        let api_json = {};
+
+        let data = {};
         let fields = ["email", "password"];
         fields.forEach((element) => {
-            api_json[element] = event.target[element].value;
+            data[element] = event.target[element].value;
         });
-        await logInUserProfile(api_json);
+        
+        await SignIn(data);
         props.setIsSigned(true)
       };
     

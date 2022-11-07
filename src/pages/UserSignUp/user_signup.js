@@ -1,30 +1,33 @@
 import React, { useState } from "react";
 import UserSigninStyles from "./user_signup_styles";
-import CallAPI from "../../utils/call_api";
+import useSignUp from "./useSignUp";
 
 const UserSignUp = (props) => {
     const[loading, setLoading] = useState(false);
 
-    const createUserProfile = async (api_json) => {
+    const SignUp = async (data) => {
         setLoading(true)
-        let user = await CallAPI({url:"http://127.0.0.1:8000/signup", method:"post", data:api_json})
-        props.setUserId(user.data.id);
-        window.sessionStorage.setItem("user_id", user.data.id)
+        useSignUp({
+            data: data,
+            setUserId: props.setUserId,
+        });
         setLoading(false)
-    }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        let api_json = {};
+
+        let data = {};
         let fields = ["name", "email", "country_code", "mobile_number", "password"];
         fields.forEach((element) => {
             if (['country_code', 'mobile_number'].includes(element)){
-                api_json[element] = parseInt(event.target[element].value);
+                data[element] = parseInt(event.target[element].value);
             } else{
-                api_json[element] = event.target[element].value;
+                data[element] = event.target[element].value;
             }
         });
-        await createUserProfile(api_json);
+
+        await SignUp(data);
         props.setIsSigned(true)
       };
     

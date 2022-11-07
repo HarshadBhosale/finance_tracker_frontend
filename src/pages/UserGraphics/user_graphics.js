@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import CallAPI from "../../utils/call_api";
 import UserGraphicsStyles from "./user_graphics_styles";
+import useGetGraphics from "./useGetGraphics";
 
 const UserGraphics = (props) => {
     const[loading, setLoading] = useState(false);
     const[year, setYear] = useState(2022);
-    const[stats, setStats] = useState({});
+    const[graphics, setGraphics] = useState({});
     const transactionYears = [2019, 2020, 2021, 2022];
     const months = ['jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec'];
 
-    const getUserStats = async () => {
+    const GetUserStats = async () => {
         setLoading(true);
-        let stats = await CallAPI({url:"http://127.0.0.1:8000/graphics", method:"post", data:{"user_id":props.userId}})
-        setStats(stats.data);
+        useGetGraphics({
+            userId: props.userId,
+            setGraphics: setGraphics,
+        });
         setLoading(false);
     }
 
     useEffect(()=>{
-        getUserStats();
+        GetUserStats();
     }, [year])
     
     
@@ -29,7 +31,7 @@ const UserGraphics = (props) => {
             {
             label: `${year} Expense`,
             data: months.map((month)=>{
-                return stats[year]?.[month]['Total Expense'];
+                return graphics[year]?.[month]['Total Expense'];
             }),
             borderColor: 'magenta',
             backgroundColor: 'orange',
@@ -43,7 +45,7 @@ const UserGraphics = (props) => {
             {
             label: `${year} Income`,
             data: months.map((month)=>{
-                return stats[year]?.[month]['Total Income'];
+                return graphics[year]?.[month]['Total Income'];
             }),
             borderColor: 'rgb(53, 162, 235)',
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
@@ -57,7 +59,7 @@ const UserGraphics = (props) => {
             {
             label: 'All Expense',
             data: transactionYears.map((transactionYear)=>{
-                return stats[transactionYear]?.['Total Expense'];
+                return graphics[transactionYear]?.['Total Expense'];
             }),
             borderColor: 'magenta',
             backgroundColor: 'orange',
@@ -71,7 +73,7 @@ const UserGraphics = (props) => {
             {
             label: 'All Income',
             data: transactionYears.map((transactionYear)=>{
-                return stats[transactionYear]?.['Total Income'];
+                return graphics[transactionYear]?.['Total Income'];
             }),
             borderColor: 'rgb(53, 162, 235)',
             backgroundColor: 'rgba(255, 99, 132, 0.5)',

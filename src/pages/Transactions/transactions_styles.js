@@ -29,7 +29,7 @@ const TransactionsStyles = {
     Transaction : {
         margin: "5px",
         display: "grid",
-        gridTemplateColumns: "100px 200px auto 200px",
+        gridTemplateColumns: "100px 200px auto 200px 200px 200px",
         border: "1.5px solid OrangeRed",
         borderRadius: "20px",
     },

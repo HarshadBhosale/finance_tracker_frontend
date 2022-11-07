@@ -9,7 +9,7 @@ const useGetTransactions = async ({
     }
 
     let api_json = {
-        url : "http://127.0.0.1:8000/transactions",
+        url : "/transactions",
         method : "post",
         data : {
             "user_id" : userId,

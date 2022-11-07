@@ -5,7 +5,7 @@ const useSignIn = async ({
     setUserId = () => {},
 }) => {
     let api_json = {
-        url : "http://127.0.0.1:8000/signin",
+        url : "/signin",
         method : "post",
         data : data
     }

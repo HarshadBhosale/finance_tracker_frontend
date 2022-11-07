@@ -5,7 +5,7 @@ const useSignUp = async ({
     setUserId = () => {},
 }) => {
     let api_json = {
-        url : "http://127.0.0.1:8000/signup",
+        url : "/signup",
         method : "post",
         data : data
     }

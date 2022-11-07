@@ -10,7 +10,7 @@ const useGetStats = async ({
     }
 
     let api_json = {
-        url : "http://127.0.0.1:8000/stats",
+        url : "/stats",
         method : "post",
         data : {
             "user_id" : userId,

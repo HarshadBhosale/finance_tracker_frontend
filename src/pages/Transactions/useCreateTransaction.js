@@ -9,7 +9,7 @@ const useCreateTransaction = async ({
     }
 
     let api_json = {
-        url : "http://127.0.0.1:8000/create/transaction",
+        url : "/create/transaction",
         method : "post",
         data : {
             ...data,

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useGetProfile from "./useGetProfile";
 import ProfileStyles from "./profile_styles";
+import useDisableProfile from "./useDisableProfile";
 
 const Profile = (props) => {
     const[profile, setProfile] = useState({});
@@ -21,6 +22,15 @@ const Profile = (props) => {
         setLoading(false)
     }
 
+    const DisableProfile = async () => {
+        setLoading(true)
+        useDisableProfile({
+            userId: props.userId
+        });
+        setLoading(false)
+        logoutProfile();
+    }
+
     useEffect(()=>{
         GetProfile()
     }, [Profile])
@@ -30,7 +40,8 @@ const Profile = (props) => {
             <div>{profile.name}</div>
             <div>{profile.email}</div>
             <div>+{profile.country_code}-{profile.mobile_number}</div>
-            <Link to="/" onClick={logoutProfile}> Log Out </Link>
+            <div><Link to="/" onClick={logoutProfile}> Log Out </Link></div>
+            <div><Link to="/" onClick={DisableProfile}> Disable Account </Link></div>
         </div>
     );
 }

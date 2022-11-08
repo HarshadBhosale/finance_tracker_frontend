@@ -29,7 +29,7 @@ const TransactionsStyles = {
     Transaction : {
         margin: "5px",
         display: "grid",
-        gridTemplateColumns: "100px 200px auto 200px 200px 200px",
+        gridTemplateColumns: "100px 200px auto 200px 200px 200px 70px",
         border: "1.5px solid OrangeRed",
         borderRadius: "20px",
     },
@@ -41,7 +41,15 @@ const TransactionsStyles = {
     TransactionFields : {
         margin: "5px",
         fontSize: "24px",
-    }
+    },
+    DisableTransaction : {
+        margin: "5px",
+        fontSize: "16px",
+        borderRadius: '20px',
+        border: '2px solid red',
+        color: "orange",
+        backgroundColor: "black",
+    },
 }
 
 export default TransactionsStyles;

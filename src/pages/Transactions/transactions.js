@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TransactionsStyles from "./transactions_styles";
 import useGetTransactions from "./useGetTransactions";
 import useCreateTransaction from "./useCreateTransaction";
+import useDisableTransaction from "./useDisableTransaction";
 
 const Transactions = (props) => {
     const[transactions, setTransactions] = useState([]);
@@ -12,7 +13,7 @@ const Transactions = (props) => {
     let currency = ["INR", "USD"];
     let expenseCategory = ["Food", "Grocery", "Gift", "Family", "Transport", "Rent", "EMI", "Electricity", "Subscription", "Other"];
     let incomeCategory = ["Salary", "Investments", "Business"];
-    let transactionHeaders = ["Event", "Category", "Description", "Currency", "Amount", "Date"]
+    let transactionHeaders = ["Event", "Category", "Description", "Currency", "Amount", "Date", ""]
 
     const GetTransactions = async () => {
         setLoading(true)
@@ -45,6 +46,18 @@ const Transactions = (props) => {
         GetTransactions()
         
         event.target.reset();
+    }
+
+    const DisableTransaction = async (transaction_id) => {
+        let data = {
+            "transaction_id" : transaction_id,
+        }
+        setLoading(true)
+        useDisableTransaction({
+            data: data
+        });
+        setLoading(false)
+        GetTransactions();
     }
 
     useEffect(()=>{
@@ -117,6 +130,9 @@ const Transactions = (props) => {
                             <div style={TransactionsStyles.TransactionFields}>
                                 {transaction.date}
                             </div>
+                            <button style={TransactionsStyles.DisableTransaction} onClick={()=>{DisableTransaction(transaction.id)}}>
+                                delete
+                            </button>
                         </div>
                     )
                 })}

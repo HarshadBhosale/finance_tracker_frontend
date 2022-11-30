@@ -2,16 +2,21 @@ import React, { useState } from "react";
 import SignInStyles from "./signin_styles";
 import useSignIn from "./useSignIn";
 
-const SignIn = (props) => {
+const SignIn = ({
+    setUserId,
+    setIsSigned,
+    setError,
+}) => {
     const[loading, setLoading] = useState(false);
 
     const GetSignIn = async (data) => {
         setLoading(true)
-        useSignIn({
+        let message = await useSignIn({
             data : data,
-            setUserId : props.setUserId,
+            setUserId : setUserId,
         });
         setLoading(false)
+        return message
     }
 
     const handleSubmit = async (event) => {
@@ -23,8 +28,13 @@ const SignIn = (props) => {
             data[element] = event.target[element].value;
         });
         
-        await GetSignIn(data);
-        props.setIsSigned(true)
+        let message = await GetSignIn(data);
+        if (!message){
+            setIsSigned(true)
+        }
+        else{
+            setError(message);
+        }
       };
     
     return(

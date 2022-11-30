@@ -4,7 +4,10 @@ import { Line } from 'react-chartjs-2';
 import GraphicsStyles from "./graphics_styles";
 import useGetGraphics from "./useGetGraphics";
 
-const Graphics = (props) => {
+const Graphics = ({
+    userId = '',
+    setError = () => {},
+}) => {
     const[loading, setLoading] = useState(false);
     const[year, setYear] = useState(2022);
     const[graphics, setGraphics] = useState({});
@@ -14,7 +17,7 @@ const Graphics = (props) => {
     const GetGraphics = async () => {
         setLoading(true);
         useGetGraphics({
-            userId: props.userId,
+            userId: userId,
             setGraphics: setGraphics,
         });
         setLoading(false);

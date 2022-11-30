@@ -2,16 +2,22 @@ import React, { useState } from "react";
 import SignUpStyles from "./signup_styles";
 import useSignUp from "./useSignUp";
 
-const SignUp = (props) => {
+const SignUp = ({
+    setUserId = '',
+    setIsSigned = () => {},
+    setIfSignin = () => {},
+    setError = () => {},
+}) => {
     const[loading, setLoading] = useState(false);
 
     const GetSignUp = async (data) => {
         setLoading(true)
-        useSignUp({
+        let message = useSignUp({
             data: data,
-            setUserId: props.setUserId,
+            setUserId: setUserId,
         });
         setLoading(false)
+        return message
     };
 
     const handleSubmit = async (event) => {
@@ -27,8 +33,13 @@ const SignUp = (props) => {
             }
         });
 
-        await GetSignUp(data);
-        props.setIsSigned(true)
+        let message = await GetSignUp(data);
+        if (message){
+            setError(message);
+        }
+        else{
+            setIsSigned(true)
+        }
       };
     
     return(
@@ -40,7 +51,7 @@ const SignUp = (props) => {
             <input style={SignUpStyles.Input} type="password" name="password" placeholder="Password..." required />
             <button style={SignUpStyles.Button} type="submit"> Sign Up </button>
             <div >
-                <button style={SignUpStyles.Button} type="submit" onClick={()=>{props.setIfSignin(false)}}> Go To Sign In </button>
+                <button style={SignUpStyles.Button} type="submit" onClick={()=>{setIfSignin(false)}}> Go To Sign In </button>
             </div>
         </form>
     );

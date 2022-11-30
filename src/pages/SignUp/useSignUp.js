@@ -10,10 +10,14 @@ const useSignUp = async ({
         data : data
     }
 
-    let user = await CallAPI(api_json)
-    setUserId(user.data.id)
+    let response = await CallAPI(api_json)
+    
+    if (response?.data?.message){
+        return response?.data?.message
+    }
 
-    window.sessionStorage.setItem("user_id", user.data.id); // remove this later
+    setUserId(response.data.id)
+    window.sessionStorage.setItem("user_id", response.data.id); // remove this later
 }
 
 export default useSignUp;

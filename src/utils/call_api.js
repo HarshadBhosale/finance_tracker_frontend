@@ -1,16 +1,28 @@
 import axios from "axios";
+import { useState } from "react";
 import BACKEND_URL from "../env";
 
-const CallAPI = async (props) => {
-    let x = await axios.request(
-        {
-            url : (BACKEND_URL + props.url),
-            method : props.method,
-            data : props.data,
-        }
-    )
+const CallAPI = async ({
+    url = '',
+    method = '',
+    data = {},
+}) => {
+    let response = {}
+
+    try {
+        response = await axios.request(
+            {
+                url : (BACKEND_URL + url),
+                method : method,
+                data : data,
+            }
+        )
+    }
+    catch(error) {
+        console.log(error);
+    }
     return(
-        x
+        response
     )
 }
 

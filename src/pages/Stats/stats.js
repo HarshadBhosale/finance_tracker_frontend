@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import useGetStats from "./useGetStats";
 import StatsStyles from './stats_styles'
 
-const Stats = (props) => {
+const Stats = ({
+    userId = '',
+    setError = () => {},
+}) => {
     const[loading, setLoading] = useState(false);
     const[year, setYear] = useState(2022);
     const[stats, setStats] = useState({});
@@ -16,7 +19,7 @@ const Stats = (props) => {
     const GetStats = async (data) => {
         setLoading(true)
         useGetStats({
-            userId : props.userId,
+            userId : userId,
             data : data,
             setStats : setStats,
         })

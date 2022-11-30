@@ -1,7 +1,9 @@
 import React from "react";
 import HomeStyles from "./home_styles";
 
-const Home = () => {
+const Home = ({
+    setError = () => {},
+}) => {
     return(
         <div style={HomeStyles.HomeMessage}>
             <div style={HomeStyles.ProjectAbout}>

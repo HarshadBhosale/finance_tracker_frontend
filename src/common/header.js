@@ -2,14 +2,17 @@ import React from "react";
 import HeaderStyles from "./header_styles";
 
 
-const Header = (props) => {
+const Header = ({
+    setError = () => {},
+    isSigned = false,
+}) => {
     return(
         <div style={HeaderStyles.Header}>
             <div style={HeaderStyles.Logo}>
                 <h1>Harshosale</h1>
             </div>
             {
-                props.isSigned ?
+                isSigned ?
                 (<div style={HeaderStyles.UserProfile}>
                     User Profile
                 </div>) :

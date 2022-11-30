@@ -4,19 +4,23 @@ import useGetProfile from "./useGetProfile";
 import ProfileStyles from "./profile_styles";
 import useDisableProfile from "./useDisableProfile";
 
-const Profile = (props) => {
+const Profile = ({
+    setIsSigned = () => {},
+    userId = '',
+    setError = () => {},
+}) => {
     const[profile, setProfile] = useState({});
     const[loading, setLoading] = useState(true);
 
     const logoutProfile = () => {
         sessionStorage.removeItem("user_id")
-        props.setIsSigned(false)
+        setIsSigned(false)
     }
 
     const GetProfile = async () => {
         setLoading(true)
         useGetProfile({
-            userId: props.userId,
+            userId: userId,
             setProfile: setProfile
         });
         setLoading(false)
@@ -25,7 +29,7 @@ const Profile = (props) => {
     const DisableProfile = async () => {
         setLoading(true)
         useDisableProfile({
-            userId: props.userId
+            userId: userId
         });
         setLoading(false)
         logoutProfile();

@@ -7,9 +7,13 @@ import Graphics from "../pages/Graphics/graphics";
 import NavGroupStyles from "./nav_group_styles";
 import Home from "../pages/Home/home";
 
-const NavGroup = (props) => {
+const NavGroup = ({
+    userId,
+    setIsSigned,
+    setError = () => {},
+}) => {
     const options = ["home", "stats", "profile", "transactions", "graphics"];
-    const views = [<Home userId={props.userId}/>, <Stats userId={props.userId}/>, <Profile userId={props.userId} setIsSigned={props.setIsSigned}/>, <Transactions userId={props.userId}/>, <Graphics userId={props.userId}/>];
+    const views = [<Home userId={userId} setError={setError} />, <Stats userId={userId} setError={setError} />, <Profile userId={userId} setIsSigned={setIsSigned} setError={setError} />, <Transactions userId={userId} setError={setError} />, <Graphics userId={userId} setError={setError} />];
 
     return(
         <>
@@ -30,7 +34,7 @@ const NavGroup = (props) => {
                                 <Route exact path={`/${options[index]}`} key={`${view}`} element= {view} />
                             )
                         })}
-                        <Route exact path="/" element={<Home userId={props.userId} />} />
+                        <Route exact path="/" element={<Home userId={userId} setError={setError} />} />
                     </Routes>
                 </div>
             </div>

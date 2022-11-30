@@ -4,7 +4,10 @@ import useGetTransactions from "./useGetTransactions";
 import useCreateTransaction from "./useCreateTransaction";
 import useDisableTransaction from "./useDisableTransaction";
 
-const Transactions = (props) => {
+const Transactions = ({
+    userId = '',
+    setError = () => {}
+}) => {
     const[transactions, setTransactions] = useState([]);
     const[loading, setLoading] = useState(false);
     const[eventValue, setEventValue] = useState({category: "Expense"});
@@ -18,7 +21,7 @@ const Transactions = (props) => {
     const GetTransactions = async () => {
         setLoading(true)
         useGetTransactions({
-            userId: props.userId,
+            userId: userId,
             setTransactions: setTransactions
         });
         setLoading(false)
@@ -27,7 +30,7 @@ const Transactions = (props) => {
     const CreateTransaction = async (data) => {
         setLoading(true)
         useCreateTransaction({
-            userId: props.userId,
+            userId: userId,
             data: data
         });
         setLoading(false)
@@ -62,7 +65,7 @@ const Transactions = (props) => {
 
     useEffect(()=>{
         GetTransactions();
-    }, [transactions])
+    }, [Transactions])
 
     return(
         <>

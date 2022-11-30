@@ -7,13 +7,16 @@ const useSignIn = async ({
     let api_json = {
         url : "/signin",
         method : "post",
-        data : data
+        data : data,
+    }
+    let response = await CallAPI(api_json)
+
+    if (response?.data?.message){
+        return response?.data?.message
     }
 
-    let user = await CallAPI(api_json)
-    setUserId(user.data.id)
-
-    sessionStorage.setItem("user_id", user.data.id); // remove this later
+    setUserId(response.data.id);
+    sessionStorage.setItem("user_id", response.data.id); // remove this later
 }
 
 export default useSignIn;

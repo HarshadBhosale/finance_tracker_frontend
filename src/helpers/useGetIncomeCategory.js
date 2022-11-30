@@ -1,4 +1,4 @@
-import CallAPI from "../../utils/call_api";
+import CallAPI from "../utils/call_api";
 
 const useGetIncomeCategory = async () => {
     let api_json = {

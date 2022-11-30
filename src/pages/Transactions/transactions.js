@@ -6,14 +6,14 @@ import useDisableTransaction from "./useDisableTransaction";
 
 const Transactions = ({
     userId = '',
-    setError = () => {}
+    setError = () => {},
 }) => {
     const[transactions, setTransactions] = useState([]);
     const[loading, setLoading] = useState(false);
     const[eventValue, setEventValue] = useState({category: "Expense"});
     const[categoryValue, setCategoryValue] = useState("");
     let event = ["Expense", "Income"];
-    let currency = ["INR", "USD"];
+    let currencies = ["INR", "USD"];
     let expenseCategory = ["Food", "Grocery", "Gift", "Family", "Transport", "Rent", "EMI", "Electricity", "Subscription", "Other"];
     let incomeCategory = ["Salary", "Investments", "Business"];
     let transactionHeaders = ["Event", "Category", "Description", "Currency", "Amount", "Date", ""]
@@ -88,7 +88,7 @@ const Transactions = ({
                     <input type="text" name="description" style={TransactionsStyles.Input} placeholder="Description..." />
 
                     <select name="currency" style={TransactionsStyles.Input}>
-                        {currency.map((currencyValue)=>{
+                        {currencies.map((currencyValue)=>{
                             return (<option value={currencyValue}>{currencyValue}</option>)
                         })}
                     </select>
@@ -122,7 +122,7 @@ const Transactions = ({
                                 {transaction.category}
                             </div>
                             <div style={TransactionsStyles.TransactionFields}>
-                                {transaction.description}
+                                {transaction.description ? transaction.description : "-----------"}
                             </div>
                             <div style={TransactionsStyles.TransactionFields}>
                                 {transaction.currency}

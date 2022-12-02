@@ -20,7 +20,7 @@ const Transactions = ({
 
     const GetTransactions = async () => {
         setLoading(true)
-        useGetTransactions({
+        await useGetTransactions({
             userId: userId,
             setTransactions: setTransactions
         });
@@ -29,7 +29,7 @@ const Transactions = ({
 
     const CreateTransaction = async (data) => {
         setLoading(true)
-        useCreateTransaction({
+        await useCreateTransaction({
             userId: userId,
             data: data
         });
@@ -42,7 +42,7 @@ const Transactions = ({
         let data = {};
         let fields = ["event", "category", "currency", "amount", "description", "date"];
         fields.forEach((element) => {
-            data[element] = event.target[element].value;
+            data[element] = event.target[element].value === "" ? undefined : event.target[element].value;
         });
         data.event === "Expense" ? data.event = -1 : data.event = 1;
         await CreateTransaction(data);
@@ -56,7 +56,7 @@ const Transactions = ({
             "transaction_id" : transaction_id,
         }
         setLoading(true)
-        useDisableTransaction({
+        await useDisableTransaction({
             data: data
         });
         setLoading(false)
@@ -93,7 +93,7 @@ const Transactions = ({
                         })}
                     </select>
 
-                    <input type="number" name="amount" style={TransactionsStyles.Input} placeholder="Amount..." />
+                    <input type="number" name="amount" style={TransactionsStyles.Input} placeholder="Amount..." required />
                     <input type="datetime-local" name="date" style={TransactionsStyles.Input} placeholder="Date..."  />
                     <button type="submit" style={TransactionsStyles.Button}>
                         Add {eventValue.category}

@@ -3,6 +3,7 @@ import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, To
 import { Line } from 'react-chartjs-2';
 import GraphicsStyles from "./graphics_styles";
 import useGetGraphics from "./useGetGraphics";
+import BarChart from "../../utils/chart";
 
 const Graphics = ({
     userId = '',
@@ -13,6 +14,7 @@ const Graphics = ({
     const[graphics, setGraphics] = useState({});
     const transactionYears = [2019, 2020, 2021, 2022];
     const months = ['jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec'];
+    let arr=[10, 6, 4, 36, 23, 47, 10, 6, 4, 26, 23, 47, 10, 6, 4, 36, 23, 47, 10, 6, 4, 26, 23, 47];
 
     const GetGraphics = async () => {
         setLoading(true);
@@ -93,7 +95,8 @@ const Graphics = ({
                 return (<option value={inputFieldValue}>{inputFieldValue}</option>)
             })}
         </select>
-        <div style={GraphicsStyles.ChartContainer}>
+        <BarChart arr={arr} />
+        {/* <div style={GraphicsStyles.ChartContainer}>
             {
                 [ExpenseData, IncomeData].map((data)=>{
                     return(<Line style={GraphicsStyles.Charts} data={data} />)
@@ -104,7 +107,7 @@ const Graphics = ({
                     return(<Line style={GraphicsStyles.Charts} data={data} />)
                 })
             }
-        </div>
+        </div> */}
         </>
     )
 

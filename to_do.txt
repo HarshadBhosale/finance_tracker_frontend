@@ -1,0 +1,29 @@
+Create data showing format
+    list view of stats
+    Scrolling
+
+Properly designed css for components
+    transaction fix headers at top
+
+
+
+Error Handling / Test as a User
+    Registration Form validation
+    Button click and api requests (look for easier Debounce, etc. implementation)
+
+
+Add a toast to show transaction added
+
+
+
+
+
+change file names visual_stats-> graphics
+hooks
+
+Add update transaction
+
+
+onInvalid={e =>  e.target.setCustomValidity('King Here')} onValid="this.setCustomValidity('');" required onInput="this.setCustomValidity('King Some value Here');"
+
+on hover logo [Harshosale] --> [HARSHAD BHOSALE]

@@ -1,16 +1,4 @@
-const GraphicsStyles = {
-    ChartContainer : {
-        display: 'grid',
-        gridTemplateColumns: 'auto auto',
-        // justifyContent: 'space-around',
-        width: '45%',
-        margin: '10px',
-        padding: '10px',
-    },
-    Charts : {
-        margin: '20px',
-        padding: '20px'
-    },
+const ChartStyles = {
     CustomChart : {
         position: 'relative',
         top: '50px',
@@ -31,26 +19,27 @@ const GraphicsStyles = {
         position: 'absolute',
         bottom: 0,
     },
-    chartGrid : ((cols)=> {
+    chartGrid : ((cols, w, g)=> {
         return {
             display: 'grid',
             gridTemplateColumns: cols,
-            width: '48%',
-            margin: '20px',
+            gap: `${g}%`,
+            width: `${w}%`,
             transform: 'rotateX(180deg)',
-            padding: '12px 10px 0px 10px',
-            justifyContent: 'space-between',
+            padding: `${g}px ${g}px 0px ${g}px`,
+            justifyContent: 'center',
         }
     }),
-    Bars : ((v, w, p)=> {
+    Bars : ((h, w)=> {
         return {
-            height: `${v}px`,
-            margin: '2px',
+            height: `${h}px`,
             width: `${w}px`,
+            marginTop: `minmax(${54*w}%, 10px)`,
+            paddingLeft: `${2*w}px`,
+            paddingRight: `${2*w}px`,
             background: 'orange',
-            // bottom: -p,
         }
     }),
 }
 
-export default GraphicsStyles;
+export default ChartStyles;

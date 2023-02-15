@@ -30,7 +30,6 @@ const NavGroupStyles = {
         border: "2px solid Red",
         borderRadius: "20px",
         marginRight: "10px",
-        marginRight: "10px",
     },
     AddTransaction: {
         position: "fixed",

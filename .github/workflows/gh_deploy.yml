@@ -13,9 +13,14 @@ jobs:
     steps:
       - name: Debug
         uses: hmarr/debug-action@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
       
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: github-deployment
       
@@ -26,10 +31,6 @@ jobs:
           git pull origin test --ff --allow-unrelated-histories
           git push
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
       - run: npm i
       - run: npm run deploy
         env:

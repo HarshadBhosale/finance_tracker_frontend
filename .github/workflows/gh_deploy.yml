@@ -24,7 +24,6 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git pull origin test --ff --allow-unrelated-histories
-          git commit -m "Merge branch 'test' of github.com:HarshadBhosale/finance_tracker_frontend into github-deployment"
           git push
 
       - name: Use Node.js

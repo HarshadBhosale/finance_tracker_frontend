@@ -1,4 +1,4 @@
-name: gh-pages-deploy
+name: deploy
 
 on:
   push:
@@ -24,7 +24,6 @@ jobs:
           git pull origin main --ff
           git commit -m "Merge branch 'main' of github.com:HarshadBhosale/finance_tracker_frontend into github-deployment"
           git push
-          npm run deploy
       
       - name: Deploy
         run: npm run deploy

@@ -30,7 +30,10 @@ jobs:
           git push
 
       - run: npm i
-      - run: npm run deploy
+      - run: |
+          git config --global user.email "harshad.bhosale@cogoport.com"
+          git config --global user.name "Harshad Bhosale"
+          npm run deploy
         env:
           CI: false
           GITHUB_TOKEN: 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

@@ -13,7 +13,13 @@ const NavGroup = ({
     setError = () => {},
 }) => {
     const options = ["home", "stats", "profile", "transactions", "graphics"];
-    const views = [<Home userId={userId} setError={setError} />, <Stats userId={userId} setError={setError} />, <Profile userId={userId} setIsSigned={setIsSigned} setError={setError} />, <Transactions userId={userId} setError={setError} />, <Graphics userId={userId} setError={setError} />];
+    const views = [
+        <Home userId={userId} setError={setError} />, 
+        <Stats userId={userId} setError={setError} />, 
+        <Profile userId={userId} setIsSigned={setIsSigned} setError={setError} />, 
+        <Transactions userId={userId} setError={setError} />, 
+        <Graphics userId={userId} setError={setError} />
+    ];
 
     return(
         <>

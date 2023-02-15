@@ -25,7 +25,7 @@ const NavGroupStyles = {
         color: "DeepPink",
         width: "100%",
         textAlign: "center",
-        backgroundColor: "yellow",
+        backgroundColor: "blue",
         overflow: "scroll",
         border: "2px solid Red",
         borderRadius: "20px",

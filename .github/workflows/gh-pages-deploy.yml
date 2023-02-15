@@ -1,0 +1,30 @@
+name: gh-pages-deploy
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Debug
+        uses: hmarr/debug-action@v2
+      
+      - name: Check out code
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+      
+      - name: Git Pull
+        run: |
+          git pull origin main --ff
+          git commit -m "Merge branch 'main' of github.com:HarshadBhosale/finance_tracker_frontend into github-deployment"
+          git push
+          npm run deploy
+      
+      - name: Deploy
+        run: npm run deploy

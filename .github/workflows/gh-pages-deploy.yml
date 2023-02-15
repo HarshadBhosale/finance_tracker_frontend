@@ -15,9 +15,9 @@ jobs:
         uses: hmarr/debug-action@v2
       
       - name: Check out code
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          ref: github-deployment
       
       - name: Git Pull
         run: |

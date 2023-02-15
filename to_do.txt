@@ -27,3 +27,5 @@ Add update transaction
 onInvalid={e =>  e.target.setCustomValidity('King Here')} onValid="this.setCustomValidity('');" required onInput="this.setCustomValidity('King Some value Here');"
 
 on hover logo [Harshosale] --> [HARSHAD BHOSALE]
+
+To add deployment

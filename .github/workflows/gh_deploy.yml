@@ -27,8 +27,6 @@ jobs:
       - run: npm i
       - run: git config --global user.email "harshad.bhosale@cogoport.com"
       - run: git config --global user.name "HarshadBhosale"
-      - run: echo ${{ secrets.ACCOUNT_PASSWORD }}
-      - run: git remote -v
-      # - run: npm run deploy
+      - run: npm run deploy
         env:
           CI: false

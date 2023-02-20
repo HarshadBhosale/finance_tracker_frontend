@@ -31,6 +31,8 @@ jobs:
 
       - run: npm i
       - run: |
+          git config --global user.email "harshad.bhosale@cogoport.com"
+          git config --global user.name "HarshadBhosale"
           npm run deploy
         env:
           CI: false

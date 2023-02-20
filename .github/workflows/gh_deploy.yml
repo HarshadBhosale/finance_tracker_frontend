@@ -25,9 +25,9 @@ jobs:
           ref: test
 
       - run: npm i
-      - run: git config --global user.email "harshad.bhosale@cogoport.com"
-      - run: git config --global user.name "HarshadBhosale"
-      - run: git remote set-url origin https://{HarshadBhosale}:${{ secrets.ACCOUNT_PASSWORD }}@github.com/HarshadBhosale/finance_tracker_frontend.git
+      # - run: git config --global user.email "harshad.bhosale@cogoport.com"
+      # - run: git config --global user.name "HarshadBhosale"
+      - run: git remote set-url origin https://${{ secrets.PAT }}@github.com/HarshadBhosale/finance_tracker_frontend.git
       - run: npm run deploy
         env:
           CI: false

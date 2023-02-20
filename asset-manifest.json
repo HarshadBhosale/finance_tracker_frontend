@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/finance_tracker_frontend/static/js/main.32153f4e.js",
+    "main.js": "/finance_tracker_frontend/static/js/main.ced44d25.js",
     "index.html": "/finance_tracker_frontend/index.html",
-    "main.32153f4e.js.map": "/finance_tracker_frontend/static/js/main.32153f4e.js.map"
+    "main.ced44d25.js.map": "/finance_tracker_frontend/static/js/main.ced44d25.js.map"
   },
   "entrypoints": [
-    "static/js/main.32153f4e.js"
+    "static/js/main.ced44d25.js"
   ]
 }

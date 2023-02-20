@@ -34,7 +34,7 @@ jobs:
           git config --global user.email "harshad.bhosale@cogoport.com"
           git config --global user.name "HarshadBhosale"
           echo ${{ secrets.ACCOUNT_PASSWORD }}
-          git remote set-url origin https://HarshadBhosale:${{ secrets.ACCOUNT_PASSWORD }}@github.com/HarshadBhosale/finance_tracker_frontend.git
+          git remote set-url origin git@github.com:HarshadBhosale/finance_tracker_frontend.git
           npm run deploy
         env:
           CI: false

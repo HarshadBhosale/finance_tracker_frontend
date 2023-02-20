@@ -22,21 +22,18 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
         with:
-          ref: github-deployment
+          ref: test
       
-      - name: Git Pull
-        run: |
-          git pull origin test --ff --allow-unrelated-histories
-          git push
+      # - name: Git Pull
+      #   run: |
+      #     git pull origin test --ff --allow-unrelated-histories
+      #     git push
 
-      - run: npm i
+      # - run: npm i
       - run: |
-          git config --global user.email "harshad.bhosale@cogoport.com"
-          git config --global user.name "HarshadBhosale"
-          mkdir ~/.ssh
-          echo ${{ secrets.PUBLIC_KEY }} >> ~/.ssh/id_ed25519.pub
-          echo ${{ secrets.PRIVATE_KEY }} >> ~/.ssh/id_ed25519
-          git remote set-url origin https://github.com/HarshadBhosale/finance_tracker_frontend.git
+          # git config --global user.email "harshad.bhosale@cogoport.com"
+          # git config --global user.name "HarshadBhosale"
+          # git remote set-url origin https://github.com/HarshadBhosale/finance_tracker_frontend.git
           npm run deploy
         env:
           CI: false

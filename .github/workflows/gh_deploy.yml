@@ -27,7 +27,7 @@ jobs:
       - run: npm i
       - run: git config --global user.email "harshad.bhosale@cogoport.com"
       - run: git config --global user.name "HarshadBhosale"
-      - run: git remote set-url origin https://{HarshadBhosale}:{Cogo@2022}@github.com/HarshadBhosale/finance_tracker_frontend.git
+      - run: git remote set-url origin https://{HarshadBhosale}:${{ secrets.ACCOUNT_PASSWORD }}@github.com/HarshadBhosale/finance_tracker_frontend.git
       - run: npm run deploy
         env:
           CI: false

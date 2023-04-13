@@ -6,19 +6,21 @@ import Transactions from "../pages/Transactions/transactions";
 import Graphics from "../pages/Graphics/graphics";
 import NavGroupStyles from "./nav_group_styles";
 import Home from "../pages/Home/home";
+import FileUpload from "../pages/FIleUpload/file_upload";
 
 const NavGroup = ({
     userId,
     setIsSigned,
     setError = () => {},
 }) => {
-    const options = ["home", "stats", "profile", "transactions", "graphics"];
+    const options = ["home", "stats", "profile", "transactions", "graphics", "file-uploader"];
     const views = [
         <Home userId={userId} setError={setError} />, 
         <Stats userId={userId} setError={setError} />, 
         <Profile userId={userId} setIsSigned={setIsSigned} setError={setError} />, 
         <Transactions userId={userId} setError={setError} />, 
-        <Graphics userId={userId} setError={setError} />
+        <Graphics userId={userId} setError={setError} />,
+        <FileUpload userId={userId} setError={setError} />
     ];
 
     return(

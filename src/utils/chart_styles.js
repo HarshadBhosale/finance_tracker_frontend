@@ -28,6 +28,7 @@ const ChartStyles = {
             transform: 'rotateX(180deg)',
             padding: `${g}px ${g}px 0px ${g}px`,
             justifyContent: 'center',
+            paddingTop: '14px',
         }
     }),
     Bars : ((h, w)=> {
